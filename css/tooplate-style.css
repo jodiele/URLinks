@@ -245,34 +245,37 @@ ul.cd-hero-slider {
 }
 
 .service-item:hover {
-	background-color: #a2cf8d;
+	background-color: #7DA0C0;
+	
 }
 
 .service-item h4 {
 	font-size: 16px;
+	color: black; /*changes text color on cards*/
 	font-weight: 700;
 	letter-spacing: 0.5px;
-	margin-bottom: 15px;
-	margin-top: 25px;
+	margin-bottom: 6px;
+	/*margin-top: 10px;*/
 }
 
+
 .service-item:hover h4 {
-	color: #fff;
+	color: #000000;
 }
 
 .service-item:hover p {
-	color: #fff;
+	color: #000000;
 }
 
 .first-service .icon {
-	background-image: url(../img/first-service-main.png);
+	background-image: url("img/card-1-main.jpg");
 	height: 32px;
 	width: 32px;
 	display: inline-block;
 }
 
 .first-service:hover .icon {
-	background-image: url(../img/first-service-white.png);
+	background-image: url(../img/card-1-main.jpg);
 }
 
 .second-service .icon {
@@ -1030,3 +1033,4 @@ h1, h2, h3, h4, .navbar-brand, .navbar-nav > li > a {
 	font-size: 16px;
 	color: #121212;
 }
+
