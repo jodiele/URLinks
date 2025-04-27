@@ -105,11 +105,13 @@ p {
 }
 
 .header.active .navbar-nav>li>a {
-	font-size: 13px;
-	font-weight: 300;
+	font-size: 14px;
+	font-weight: 600;
+	font-family: "Montserrat", sans-serif !important;
 	text-transform: uppercase;
 	text-shadow: none;
 	color: #121212!important;
+	letter-spacing: 0.5px;
 }
 
 .header.active {
@@ -979,4 +981,30 @@ body.lb-disable-scrolling {
 	height: 75px;
 	width: auto;
 	display: block;
+}
+
+.intro-page {
+	padding-top: 100px;
+}
+  
+  .safety-page {
+	padding-top: 40px; /* or whatever looks good for that page */
+}
+
+/* NAVBAR FONT FIX */
+.navbar-nav > li > a,
+.navbar-brand {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+}
+  
+h1, h2, h3, h4, .navbar-brand, .navbar-nav > li > a {
+	font-family: "Montserrat", sans-serif !important;
 }
