@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
-// Your Firebase project configuration
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyD5fcYiSBL--WERcylwAETgx123hH42Q28",
   authDomain: "urlinks-d2f2e.firebaseapp.com",
@@ -17,21 +17,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Wait for the page to load
+// Wait for the page to load fully
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Check if the URL has ?signup=true to start on Sign Up
-  const params = new URLSearchParams(window.location.search);
-  const wantsSignup = params.get('signup') === 'true';
-
-  if (wantsSignup) {
-    const formWrappers = document.querySelectorAll('.form-wrapper');
-    formWrappers.forEach(wrapper => wrapper.classList.remove('is-active'));
-    const signupButton = document.querySelector('.switcher-signup');
-    signupButton.parentElement.classList.add('is-active');
-  }
-
-  // Setup switchers to toggle between forms
+  // Switcher buttons
   const switchers = document.querySelectorAll('.switcher');
   switchers.forEach(button => {
     button.addEventListener('click', () => {
@@ -40,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Handle Login Form
+  // Handle Login
   const loginForm = document.querySelector('.form-login');
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -50,13 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       alert('Login successful!');
-      window.location.href = 'index.html'; // Redirects to Home page after login
+      window.location.href = 'index.html';
     } catch (error) {
       alert('Login failed: ' + error.message);
     }
   });
 
-  // Handle Sign Up Form
+  // Handle Sign Up
   const signupForm = document.querySelector('.form-signup');
   signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -71,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      alert('Registration successful! Please log in now.');
-      window.location.reload(); // Reloads page so Login form is shown again
+      alert('Registration successful! Please log in.');
+      window.location.reload(); // Reloads back to login form
     } catch (error) {
       alert('Registration failed: ' + error.message);
     }
