@@ -267,50 +267,14 @@ ul.cd-hero-slider {
 	color: #000000;
 }
 
-.first-service .icon {
-	background-image: url("img/card-1-main.jpg");
-	height: 32px;
-	width: 32px;
-	display: inline-block;
-}
-
-.first-service:hover .icon {
-	background-image: url(../img/card-1-main.jpg);
-}
-
-.second-service .icon {
-	background-image: url(../img/second-service-main.png);
-	height: 32px;
-	width: 22px;
-	display: inline-block;
-}
-
-.second-service:hover .icon {
-	background-image: url(../img/second-service-white.png);
-}
-
-.third-service .icon {
-	background-image: url(../img/third-service-main.png);
-	height: 32px;
-	width: 32px;
-	display: inline-block;
-}
-
-.third-service:hover .icon {
-	background-image: url(../img/third-service-white.png);
-}
-
-.fourth-service .icon {
-	background-image: url(../img/fourth-service-main.png);
-	height: 32px;
-	width: 32px;
-	display: inline-block;
-}
-
-.fourth-service:hover .icon {
-	background-image: url(../img/fourth-service-white.png);
-}
-
+.card-image {
+	height: 160px;
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+  }
 
 #what-we-do {
 	background-image: url(../img/what-we-do-bg.png);
@@ -1034,3 +998,10 @@ h1, h2, h3, h4, .navbar-brand, .navbar-nav > li > a {
 	color: #121212;
 }
 
+
+.card-img-top {
+	width: 100%;
+	height: 160px;
+	object-fit: cover;
+	border-radius: 0;
+}
