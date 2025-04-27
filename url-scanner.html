@@ -1,20 +1,43 @@
 <!DOCTYPE html>
-<body> 
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>URL Checker</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="container">
-    <h1>URL Checker</h1>
-    <input type="text" id="urlInput" placeholder="Enter URL here" />
-    <button id="checkButton">Check URL</button>
-    <p id="resultMessage"></p>
-  </div>
+  <title>URLinks - URL Safety Scanner</title>
 
-  <script src="script.js"></script>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/assets/w-logo.png" type="image/x-icon" />
+
+  <!-- Fonts and Icons -->
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap (Optional) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="url-scanner.css">
+</head>
+
+<body>
+
+  <main class="container py-5">
+    <h1 class="text-center mb-4" style="color: #333;">URL Safety Scanner</h1>
+
+    <form id="urlForm" class="text-center">
+      <div class="search-container">
+        <input type="text" id="urlInput" class="search-input" placeholder="Enter URL (e.g., https://example.com)" required>
+        <button class="search-btn" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </form>
+
+    <div id="scanResult" class="mt-5 text-center" style="display: none;"></div>
+  </main>
+
+  <!-- Your JavaScript -->
+  <script type="module" src="url-scanner.js"></script>
+
 </body>
 </html>
