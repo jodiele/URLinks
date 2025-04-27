@@ -94,8 +94,8 @@ async function fetchMoreWebsiteInfo(userURL) {
   }
 }
 
-document.getElementById('urlForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-  const userURL = document.getElementById('urlInput').value.trim();
-  scanWithWebRisk(userURL);
-});
+  document.getElementById('urlForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const userURL = document.getElementById('urlInput').value.trim();
+    scanWithWebRisk(userURL);
+  });
