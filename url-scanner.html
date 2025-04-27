@@ -1,90 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>URLinks - URL Safety Scanner</title>
+  <title>CyberAlley - URL Safety Scanner</title>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="img/w_urlinks_logo.png" type="image/x-icon" />
-
-  <!-- Fonts and Icons -->
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
-
-  <!-- CSS Files -->
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
-  <link rel="stylesheet" href="css/fontAwesome.css" />
-  <link rel="stylesheet" href="css/hero-slider.css" />
-  <link rel="stylesheet" href="css/tooplate-style.css" />
-  <link rel="stylesheet" href="url-scanner.css" />
-
-  <style>
-    body {
-      font-family: "Open Sans", sans-serif;
-      padding-top: 100px; /* Prevent navbar overlap */
-    }
-
-    h1, h2, h3, h4 {
-      font-family: "Montserrat", sans-serif;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="url-scanner.css"> <!-- Custom Styles -->
 </head>
-
-<body id="top" class="intro-page">
-
-  <!-- NAVBAR -->
-  <div class="header">
-    <div class="container">
-      <nav class="navbar navbar-inverse" role="navigation">
-        <div class="navbar-header">
-          <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="index.html" class="navbar-brand">
-            <img src="img/urlinks_logo.png" alt="URLinks Logo" class="logo-img" />
-          </a>
-        </div>
-        <div id="main-nav" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html">Explore</a></li>
-            <li><a href="url-scanner.html">URL Scanner</a></li>
-            <li><a href="register.html?signup=true">Sign Up</a></li>
-            <li><a href="login.html">Log In</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-  </div>
-  <!-- END NAVBAR -->
-
-  <!-- MAIN CONTENT -->
+<body>
   <main class="container py-5">
-    <h1 class="text-center mb-4" style="color: #333;">URL Safety Scanner</h1>
+    <h1 class="text-center mb-4">URL Safety Scanner</h1>
 
-    <form id="urlForm" class="text-center">
-      <div class="search-container">
-        <input type="text" id="urlInput" class="search-input" placeholder="Enter URL (e.g., https://example.com)" required>
-        <button class="search-btn" type="submit">
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
-    </form>
+    <div class="search-container">
+      <input type="text" id="urlInput" class="search-input" placeholder="Enter URL (e.g., https://example.com)" required>
+      <button id="scanButton" class="search-btn">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
 
-    <div id="scanResult" class="mt-5 text-center" style="display: none;">
-      <!-- Scan results cards will be dynamically inserted here -->
-    </div>    
+    <div id="scanResult" class="result-card text-center mt-5" style="display: none;">
+      <!-- Scan result will appear here -->
+    </div>
+
   </main>
 
-  <!-- JavaScript -->
-  <script src="js/vendor/bootstrap.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
   <script type="module" src="url-scanner.js"></script>
 </body>
 </html>
