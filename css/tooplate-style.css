@@ -22,7 +22,7 @@ p {
 }
 .primary-button a {
 	display: inline-block;
-	background-color: #a2cf8d;
+	background-color: #7DA0C0;
 	padding: 12px 18px;
 	color: #fff;
 	font-size: 11px;
@@ -34,7 +34,7 @@ p {
 	transition: all 0.5s;
 }
 .primary-button a:hover {
-	background-color: #5c9d7d;
+	background-color: #1681B8;
 }
 .white-button a {
 	display: inline-block;
@@ -74,7 +74,7 @@ p {
     z-index: 10000;
     transition: all 0.2s ease-in-out;
     height: 80px;
-    background-color: #90A8B0;  /* rgba(250, 250, 250, 0.98) makes navbar always visible */
+    background-color: #7DA0C0;  /* rgba(250, 250, 250, 0.98) makes navbar always visible */
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* subtle shadow */  
     text-align: center;
     line-height: 40px;
@@ -115,7 +115,7 @@ p {
 }
 
 .header.active {
-    background-color: #90A8B0;
+    background-color: #7DA0C0;
     -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
@@ -130,7 +130,7 @@ p {
 }
 .navbar-inverse {
 	background-image: none;
-	background-color: #90A8B0;
+	background-color: #7DA0C0;
 }
 .header .navbar {
     margin: 0;
@@ -681,14 +681,7 @@ footer ul li a:hover {
 }
 
 
-
-
 /* LIGHT BOX */
-
-body:after {
-  content: url(../img/close.png) url(../img/loading.gif) url(../img/prev.png) url(../img/next.png);
-  display: none;
-}
 
 body.lb-disable-scrolling {
   overflow: hidden;
@@ -988,7 +981,7 @@ body.lb-disable-scrolling {
 }
   
   .safety-page {
-	padding-top: 40px; /* or whatever looks good for that page */
+	padding-top: 100px; /* or whatever looks good for that page */
 }
 
 /* NAVBAR FONT FIX */
@@ -1007,4 +1000,33 @@ body {
   
 h1, h2, h3, h4, .navbar-brand, .navbar-nav > li > a {
 	font-family: "Montserrat", sans-serif !important;
+}
+
+
+.intro-wrapper {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 40px 20px;
+	text-align: left;
+  }
+  
+.intro-wrapper h3,
+.intro-wrapper h4 {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 700;
+	text-align: center;
+	margin-bottom: 20px;
+}
+  
+.intro-wrapper ul {
+	list-style-type: disc;
+	padding-left: 40px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+  
+.intro-wrapper ul li {
+	margin-bottom: 10px;
+	font-size: 16px;
+	color: #121212;
 }
