@@ -1,23 +1,23 @@
 // url-scanner.js
-const apiKey = 'AIzaSyBdlafbfhQJf1NAC9F3BXpsHqjTrIMY8lA'; // Replace with your real WebRisk API key
+
+const apiKey = 'AIzaSyBdlafbfhQJf1NAC9F3BXpsHqjTrIMY8lA'; // Your WebRisk API key
 
 async function scanWithWebRisk(userURL) {
   const baseURL = 'https://webrisk.googleapis.com/v1/uris:search';
-  
-  // 👇 Threat types listed properly, repeated
+
   const threatTypes = [
     'MALWARE',
     'SOCIAL_ENGINEERING',
     'UNWANTED_SOFTWARE'
-  ]
-    .map(type => `threatTypes=${type}`)
-    .join('&'); 
+  ].map(type => `threatTypes=${type}`).join('&');
 
   const fullWebRiskURL = `${baseURL}?${threatTypes}&uri=${encodeURIComponent(userURL)}&key=${apiKey}`;
   const requestURL = `https://corsproxy.io/?${fullWebRiskURL}`;
 
   const resultDiv = document.getElementById('scanResult');
   resultDiv.style.display = 'block';
+
+  // Show loading spinner
   resultDiv.innerHTML = `
     <div class="spinner-border text-info" role="status">
       <span class="visually-hidden">Loading...</span>
@@ -29,34 +29,40 @@ async function scanWithWebRisk(userURL) {
     const response = await fetch(requestURL);
     const data = await response.json();
 
+    const detectedThreats = data.threat?.threatTypes || [];
+
+    let resultHtml = '';
+
     if (data.threat) {
-      resultDiv.innerHTML = `
+      resultHtml = `
         <h3 style="color: red;">🚨 Dangerous URL Detected</h3>
-        <p><strong>Threat Type(s):</strong> ${data.threat.threatTypes.join(', ')}</p>
+        <p><strong>Threat Type(s):</strong> ${detectedThreats.join(', ')}</p>
       `;
     } else {
-      resultDiv.innerHTML = `
+      resultHtml = `
         <h3 style="color: green;">✅ This URL is Safe!</h3>
         <p><strong>No threats found.</strong></p>
       `;
-
-      // 🚀 Now that it's safe, fetch website details
-      fetchMoreWebsiteInfo(userURL);
+      fetchMoreWebsiteInfo(userURL); // Fetch extra details if safe
     }
+
+    // Insert resultHtml INSIDE the resultDiv, keeping the centered box
+    resultDiv.innerHTML = resultHtml;
+
   } catch (error) {
     console.error('Error during WebRisk lookup:', error);
-    resultDiv.innerHTML = `<p style="color: red;">Error scanning URL. Try again later.</p>`;
+    resultDiv.innerHTML = `<p style="color: red;">Error scanning URL. Please try again later.</p>`;
   }
 }
 
+// Fetch IP / Location Info
 async function fetchMoreWebsiteInfo(userURL) {
   const domainName = new URL(userURL).hostname;
-  const geoApiKey = 'at_IYWfmstTfSlpeMm69M90WEsknKUjk'; // Your GeoIP API key
+  const geoApiKey = 'at_IYWfmstTfSlpeMm69M90WEsknKUjk'; // Your GeoIPify key
 
   const resultDiv = document.getElementById('scanResult');
 
   try {
-    // 1. Find IP using DNS Google
     const dnsURL = `https://dns.google/resolve?name=${domainName}&type=A`;
     const dnsResponse = await fetch(`https://corsproxy.io/?${dnsURL}`);
     const dnsData = await dnsResponse.json();
@@ -67,7 +73,6 @@ async function fetchMoreWebsiteInfo(userURL) {
       throw new Error('Could not find IP address.');
     }
 
-    // 2. Get location info using IP
     const geoLookupURL = `https://corsproxy.io/?https://geo.ipify.org/api/v2/country,city?apiKey=${geoApiKey}&ipAddress=${ipAddress}`;
     const geoResponse = await fetch(geoLookupURL);
     const geoData = await geoResponse.json();
@@ -82,9 +87,11 @@ async function fetchMoreWebsiteInfo(userURL) {
       <p><strong>ISP / Hosting:</strong> ${geoData.isp || 'Unknown'}</p>
     `;
 
+    // Append extra info below the scan result
     resultDiv.innerHTML += extraInfo;
+
   } catch (error) {
-    console.error('Error fetching extra website info:', error);
+    console.error('Error fetching website info:', error);
     resultDiv.innerHTML += `
       <hr>
       <h4>🌐 Website Details:</h4>
@@ -94,8 +101,18 @@ async function fetchMoreWebsiteInfo(userURL) {
   }
 }
 
-  document.getElementById('urlForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const userURL = document.getElementById('urlInput').value.trim();
-    scanWithWebRisk(userURL);
-  });
+// Handle form submission
+const urlForm = document.getElementById('urlForm');
+const scanButton = document.getElementById('scanButton');
+
+urlForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const userURL = document.getElementById('urlInput').value.trim();
+  if (userURL) scanWithWebRisk(userURL);
+});
+
+scanButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  const userURL = document.getElementById('urlInput').value.trim();
+  if (userURL) scanWithWebRisk(userURL);
+});
